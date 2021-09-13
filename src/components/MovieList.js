@@ -1,14 +1,14 @@
 import React from "react";
-import MovieCard from "./MovieCard";
+import Movie from "./Movie";
 
-function MovieList({ movieListArray, title }) {
-    console.log(movieListArray)
+function MovieList({ movieListArray, title}) {
+    // console.log(movieListArray)
     return (
         <div id="movie-list">
             <h2 id={title}>{title}</h2>
             {movieListArray.map(movie => {
                 return(
-                    <MovieCard key={movie.id} movie={movie}/>
+                    <Movie key={movie.id} movie={movie} vote_average={movie.vote_average} overview={movie.overview}/>
                 )
             })}
             <hr></hr>
