@@ -12,15 +12,15 @@ function App() {
   const NOWPLAYING_LIST = "https://api.themoviedb.org/3/movie/now_playing?api_key=96e1ba7547341bdadc80d9ff0f1edbab&language=en-US&page=1";
   const [nowPlayingList, setNowPlayingList] = useState([]);
 
+  const [searchedMovies, setSearchedMovies] = useState([]);
+
   useEffect(() => {
     fetch(POPULAR_LIST)
     .then(resp => resp.json())
     .then(data => {
       setPopularList(data.results);
     })
-  }, [])
 
-  useEffect(() => {
     fetch(NOWPLAYING_LIST)
     .then(resp => resp.json())
     .then(data => {
@@ -28,12 +28,11 @@ function App() {
     })
   }, [])
 
-
   return (
     <div className="App">
-      <Header />
-      <MovieList movieListArray={popularList} />
-      <MovieList movieListArray={nowPlayingList} />
+      <Header setSearchedMovies={setSearchedMovies} />
+      <MovieList movieListArray={popularList} title="Most Popular" />
+      <MovieList movieListArray={nowPlayingList} title="Now Playing" />
     </div>
   );
 }
