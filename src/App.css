@@ -37,8 +37,13 @@
   }
 }
 
-#movie-list {
-  background-color: black;
+#movie-list{
+  flex: 0 1 auto;
+  border solid red 1px;
+  height: 150px;
+  margin: 1px;
+  cursor: pointer;
+  outline: 4px inset #000;
 }
 
 /* Popup style */
