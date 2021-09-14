@@ -3,7 +3,6 @@ import Movie from "./Movie";
 import ViewAll from "./ViewAll";
 
 function MovieList({ movieListArray, title }) {
-    // console.log(movieListArray)
     return (
         <div id="movie-list-container">
             <h2 id={title}>{title}</h2>
@@ -13,9 +12,10 @@ function MovieList({ movieListArray, title }) {
                     <Movie key={movie.id} movie={movie}/>
                 )
             })}
+            <div className="pages">
+                
             </div>
-            <ViewAll section={title} />
-            <hr></hr>
+            </div>
         </div>
     );
 }

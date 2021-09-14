@@ -55,6 +55,12 @@ code {
   justify-content: space-around;
   font-size: calc(10px + 2vmin);
   color: white;
+
+  position: fixed;
+  vertical-align: top;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
 
@@ -106,6 +112,10 @@ code {
   color: #348fff;
 }
 
+#spacer {
+  margin-top: 150px;
+}
+
 #movie-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -117,7 +127,7 @@ code {
 
 #movie-list-container img{
   flex: 0 1 auto;
-  border: solid #348fff 1px;
+  border: solid #348fff 3px;
   height: 380px;
   margin: 10px;
   cursor: pointer;
@@ -127,6 +137,19 @@ code {
 #movie-list-container img:hover{
   box-shadow: 0px 0px 10px 5px #ffffff;
   border: solid #ffffff 1px;
+}
+
+.view-all {
+  color: #ffffff;
+  background-color: #348fff;
+  border-radius: 20px;
+  border:solid #348fff 3px;
+}
+
+.view-all:hover {
+  background-color: #348fff;
+  border-radius: 20px;
+  border:solid #ffffff 3px;
 }
 
 /* Popup style */

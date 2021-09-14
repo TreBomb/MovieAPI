@@ -1,11 +1,12 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function NavBar() {
     return(
         <div id="navbar">
-            <h1 class="nav-button">Home</h1>
-            <h1 class="nav-button">Most Popular</h1>
-            <h1 class="nav-button">All</h1>
+            <NavLink className="nav-button" exact to="/">Home</NavLink>
+            <NavLink className="nav-button" to="/popular">Most Popular</NavLink>
+            <NavLink className="nav-button" to="/all">All</NavLink>
         </div>
     )
 }

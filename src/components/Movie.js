@@ -10,7 +10,7 @@ function Movie ({ movie, onClickSelect }) {
         fetch(`${BASE_URL}/movie/${movie.id}?api_key=96e1ba7547341bdadc80d9ff0f1edbab`)
         .then(resp => resp.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             setSelectedMovies(data);
         });
     }, []);
