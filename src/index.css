@@ -1,7 +1,7 @@
 * {
-  /* margin: 0; */
   font-family: 'Play', sans-serif;
-  /* box-sizing: border-box; */
+  color: black;
+  font-size: 30px;
 }
 
 
@@ -12,6 +12,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: rgb(1,4,24);
+  background: linear-gradient(0deg, rgba(1,4,24,1) 24%, rgba(255,5,5,1) 100%);
 }
 
 code {
@@ -58,6 +60,11 @@ code {
   }
 }
 
+#search {
+  font-size: 30px;
+}
+
+
 #movie-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -73,7 +80,7 @@ code {
   height: 150px;
   margin: 1px;
   cursor: pointer;
-  outline: 4px inset #000;
+  outline: 4px inset black;
 }
 
 /* Popup style */
@@ -85,6 +92,8 @@ code {
   top: 0;
   left: 0;
 }
+
+
  
 .box {
   position: relative;
