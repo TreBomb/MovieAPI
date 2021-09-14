@@ -35,7 +35,7 @@ function Movie ({ movie, onClickSelect }) {
         content={<>
           <h1>{selectedMovie.title}</h1>
           <p>{selectedMovie.release_date.substr(0, 4)}</p>
-          <p>Rating: {selectedMovie.vote_average}  ({selectedMovie.vote_count})</p>
+          <p>Rating: {selectedMovie.vote_average}/10  ({selectedMovie.vote_count})</p>
           <p>{selectedMovie.overview}</p>
           {/* <button>{}</button>  */}
         </>}
