@@ -15,16 +15,13 @@ function MovieList({ movieListArray, title, list }) {
             console.log(data);
             setPage(data.page);
             setTotalPages(data.total_pages);
-            setMovies(data.results);
+            setMovies(movieListArray);
         })
-    }, [])
+    }, [movieListArray])
 
     useEffect(() => {
-        console.log(change);
-        setPage(4);
         if(change==="prev") {
-            setPage(page - 1);
-            console.log(page);
+            page === 1 ? setPage(totalPages) : setPage(page - 1);
             console.log(`${list}&page=${page}`);
             fetch(`${list}&page=${page}`)
             .then(r => r.json())
@@ -36,8 +33,7 @@ function MovieList({ movieListArray, title, list }) {
             forceChange("");
         }
         if(change==="next") {
-            setPage(page + 1);
-            console.log(page);
+            page === totalPages ? setPage(1) : setPage(page + 1);
             console.log(`${list}&page=${page}`);
             fetch(`${list}&page=${page}`)
             .then(r => r.json())
@@ -50,23 +46,38 @@ function MovieList({ movieListArray, title, list }) {
         }
     }, [change])
 
-    return (
-        <div id="movie-list-container">
-            <h2 id={title}>{title}</h2>
-            <div id="movie-grid">
-            {movies.map(movie => {
-                return(
-                    <Movie key={movie.id} movie={movie}/>
-                )
-            })}
-            <div className="pages">
-                <button className="page-button" onClick={e => forceChange("prev")}>{`<`}</button>
-                <p className="page-number">{page}</p>
-                <button className="page-button" onClick={e => forceChange("next")}>{`>`}</button>
+    if(title !=="Search Results") {
+        return (
+            <div id="movie-list-container">
+                <h2 id={title}>{title}</h2>
+                <div id="movie-grid">
+                {movies.map(movie => {
+                    return(
+                        <Movie key={movie.id} movie={movie}/>
+                    )
+                })}
+                <div className="pages">
+                    <button className="page-button" onClick={e => forceChange("prev")}>{`<`}</button>
+                    <p className="page-number">{page}</p>
+                    <button className="page-button" onClick={e => forceChange("next")}>{`>`}</button>
+                </div>
+                </div>
             </div>
+        );
+    } else if (title === "Search Results") {
+        return (
+            <div id="movie-list-container">
+                <h2 id={title}>{title}</h2>
+                <div id="movie-grid">
+                {movieListArray.map(movie => {
+                    return(
+                        <Movie key={movie.id} movie={movie}/>
+                    )
+                })}
+                </div>
             </div>
-        </div>
-    );
+        )
+    }
 }
 
 export default MovieList;

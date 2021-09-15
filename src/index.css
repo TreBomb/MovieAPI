@@ -161,6 +161,29 @@ code {
   transform: scale(1.2);
 }
 
+.pages {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-button {
+  margin: 20px;
+  color: #ffffff;
+  background-color: #348fff;
+  border-radius: 20px;
+  border: solid #348fff 3px;
+  font-size: 25px;
+}
+
+.page-button:hover {
+  background-color: #348fff;
+  border-radius: 20px;
+  border:solid #ffffff 3px;
+  transform: scale(1.2);
+}
+
 .star-rating {
   unicode-bidi: bidi-override;
   direction: rtl;
