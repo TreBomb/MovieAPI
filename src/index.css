@@ -161,6 +161,21 @@ code {
   transform: scale(1.2);
 }
 
+.star-rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.star-rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.star-rating > span:hover:before,
+.star-rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
+
 /* Popup style */
 .popup-box {
   position: fixed;
@@ -216,9 +231,12 @@ button {
   outline: none;
   cursor: pointer;
 }
-.on {
-  color: #000;
+
+.on span {
+  color: white !important;
+  content: "bello";
 }
+
 .off {
   color: #ccc;
 }
