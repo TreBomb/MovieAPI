@@ -32,12 +32,6 @@ const StarRating = ({ movie }) => {
     //   }
 
       useEffect(() => {
-          fetch(`http://localhost:3000`)
-          .then(r => r.json())
-          .then(data => console.log(data))
-      }, [])
-
-      useEffect(() => {
         console.log(`**Got Rating: ${rating}`);
   
         const requestBody = {

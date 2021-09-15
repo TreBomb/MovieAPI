@@ -8,13 +8,13 @@ let sessionID;
 
 
 function App() {
-  const POPULAR_LIST = "https://api.themoviedb.org/3/movie/popular?api_key=96e1ba7547341bdadc80d9ff0f1edbab&language=en-US&page=1";
+  const POPULAR_LIST = "https://api.themoviedb.org/3/movie/popular?api_key=96e1ba7547341bdadc80d9ff0f1edbab&language=en-US";
   const [popularList, setPopularList] = useState([]);
 
-  const NOWPLAYING_LIST = "https://api.themoviedb.org/3/movie/now_playing?api_key=96e1ba7547341bdadc80d9ff0f1edbab&language=en-US&page=1";
+  const NOWPLAYING_LIST = "https://api.themoviedb.org/3/movie/now_playing?api_key=96e1ba7547341bdadc80d9ff0f1edbab&language=en-US";
   const [nowPlayingList, setNowPlayingList] = useState([]);
 
-  const ALL_LIST = "https://api.themoviedb.org/3/discover/movie?api_key=96e1ba7547341bdadc80d9ff0f1edbab&language=en-US&sort_by=vote_count.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate";
+  const ALL_LIST = "https://api.themoviedb.org/3/discover/movie?api_key=96e1ba7547341bdadc80d9ff0f1edbab&language=en-US&sort_by=vote_count.desc&include_adult=false&include_video=false";
   const [allList, setAllList] = useState([]);
 
   const [searchedMovies, setSearchedMovies] = useState([]);
@@ -59,15 +59,15 @@ function App() {
         </Route>
         <Route exact path="/popular">
         <div id="spacer"></div>
-          <IndividualList movieListArray={popularList} title="Most Popular" />
+          <IndividualList movieListArray={popularList} title="Most Popular" list={POPULAR_LIST} />
         </Route>
         <Route exact path="/playing">
         <div id="spacer"></div>
-          <IndividualList movieListArray={nowPlayingList} title="Now Playing" />
+          <IndividualList movieListArray={nowPlayingList} title="Now Playing" list={NOWPLAYING_LIST} />
         </Route>
         <Route exact path="/all">
         <div id="spacer"></div>
-          <IndividualList movieListArray={allList} title="All" />
+          <IndividualList movieListArray={allList} title="All" list={ALL_LIST} />
         </Route>
         <Route exact path="/home">
         <div id="spacer"></div>
@@ -76,7 +76,7 @@ function App() {
         </Route>
         <Route path="/search">
         <div id="spacer"></div>
-          <IndividualList movieListArray={searchedMovies} title="Search Results" />
+          <IndividualList movieListArray={searchedMovies} title="Search Results" list={ALL_LIST} />
         </Route>
         <Route path="*">
           <h1>404 not found</h1>
