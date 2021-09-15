@@ -23,7 +23,7 @@ function SearchBar({ setSearchedMovies }) {
                 value={text}
                 type="text"
                 id="search"
-                placeholder="Search Movies"
+                placeholder= "Search Movies"
                 onChange={(e) => setText(e.target.value)}
             />
         </div>

@@ -15,6 +15,10 @@ body {
   background: rgb(1,4,24);
 }
 
+h2{
+  font-size: 38px; 
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -84,10 +88,11 @@ code {
 .searchbar input {
   background-color: #282c34;
   border: solid #ffffff 1px;
-  border-radius: 5px;
+  border-radius: 20px;
   color: #ffffff;
   justify-content: center;
-  font-size: px;
+  text-align: center;
+  font-size: 25px;
   position: relative;
   width: 98%;
   left: 20%;
@@ -137,6 +142,7 @@ code {
 #movie-list-container img:hover{
   box-shadow: 0px 0px 10px 5px #ffffff;
   border: solid #ffffff 1px;
+  transform: scale(1.2);
 }
 
 .view-all {
@@ -144,12 +150,14 @@ code {
   background-color: #348fff;
   border-radius: 20px;
   border:solid #348fff 3px;
+  font-size: 25px;
 }
 
 .view-all:hover {
   background-color: #348fff;
   border-radius: 20px;
   border:solid #ffffff 3px;
+  transform: scale(1.2);
 }
 
 /* Popup style */

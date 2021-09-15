@@ -4,7 +4,7 @@ import logo from '../logo.svg';
 import Header from "./Header";
 import MovieList from "./MovieList";
 import IndividualList from "./IndividualList";
-
+let sessionID;
 
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
 
   const [searchedMovies, setSearchedMovies] = useState([]);
   const [page, setPage] = useState("/");
+  
 
   useEffect(() => {
     fetch(POPULAR_LIST)
@@ -37,6 +38,13 @@ function App() {
     .then(resp => resp.json())
     .then(data => {
       setAllList(data.results);
+    })
+
+    fetch('https://api.themoviedb.org/3/authentication/guest_session/new?api_key=96e1ba7547341bdadc80d9ff0f1edbab')
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data);
+      sessionID = data.guest_session_id;
     })
   }, [])
 
@@ -79,3 +87,4 @@ function App() {
 }
 
 export default App;
+export {sessionID};
