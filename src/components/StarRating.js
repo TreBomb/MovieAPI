@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {sessionID} from "./App";
 
 
@@ -8,28 +8,55 @@ const StarRating = ({ movie }) => {
     const BASE_URL = "https://api.themoviedb.org/3";
 
 
-    function handleRateMovie(value) {
-        // const strValue = e.target.name; //this is a string rn, make it an int before sending
-        // const value = parseInt(strValue, 10);
-        // e.preventDefault()
-        console.log(`**Got Value: ${value}`);
+    // function handleRateMovie(value) {
+    //     // const strValue = e.target.name; //this is a string rn, make it an int before sending
+    //     // const value = parseInt(strValue, 10);
+    //     // e.preventDefault()
+    //     console.log(`**Got Rating: ${rating}`);
+    //     console.log(`**Got Value: ${value}`);
+  
+    //     const requestBody = {
+    //       "value": value
+    //     }
+    
+    //     fetch(`${BASE_URL}/movie/${movie.id}/rating?api_key=96e1ba7547341bdadc80d9ff0f1edbab&guest_session_id=${sessionID}`, {
+    //       method: 'POST',
+    //       headers: { 'Content-Type': 'application/json' },
+    //       body: JSON.stringify(requestBody)
+    //     })
+    //       .then(r => r.json())
+    //       .then(responseJson => {
+    //       console.log(responseJson)
+    //         // onSubmit(updatedPizzaObj)
+    //       })
+    //   }
+
+      useEffect(() => {
+          fetch(`http://localhost:3000`)
+          .then(r => r.json())
+          .then(data => console.log(data))
+      }, [])
+
+      useEffect(() => {
+        console.log(`**Got Rating: ${rating}`);
   
         const requestBody = {
-          "value": value
+          "value": rating
         }
-    
-        fetch(`${BASE_URL}/movie/${movie.id}/rating?api_key=96e1ba7547341bdadc80d9ff0f1edbab&guest_session_id=${sessionID}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(requestBody)
-        })
-          .then(r => r.json())
-          .then(responseJson => {
-          console.log(responseJson)
-            // onSubmit(updatedPizzaObj)
+        
+        if(rating !== 0) {
+          fetch(`${BASE_URL}/movie/${movie.id}/rating?api_key=96e1ba7547341bdadc80d9ff0f1edbab&guest_session_id=${sessionID}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(requestBody)
           })
-      }
-
+            .then(r => r.json())
+            .then(responseJson => {
+            console.log(responseJson)
+              // onSubmit(updatedPizzaObj)
+            })
+        }
+      }, [rating])
 
     return (
       <div className="star-rating">
@@ -41,8 +68,8 @@ const StarRating = ({ movie }) => {
               key={index}
               className={index <= (hover || rating) ? "on" : "off"}
               onClick={() => {
-                  setRating(index)
-                  handleRateMovie(index)
+                  setRating(5 - index)
+                  // handleRateMovie(index)
                 }}
               onMouseEnter={() => setHover(index)}
               onMouseLeave={() => setHover(rating)}
