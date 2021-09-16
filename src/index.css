@@ -163,9 +163,8 @@ code {
 
 .pages {
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .page-button {
@@ -248,18 +247,22 @@ code {
   border: solid #ffffff 1px;
 }
 
-button {
+/* button {
   background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer;
 }
 
-.on span {
-  color: white !important;
-  content: "bello";
+.on {
+  color: #000;
 }
 
 .off {
   color: #ccc;
+} */
+
+.star {
+  color: #ff9933;
+  cursor: pointer;
 }

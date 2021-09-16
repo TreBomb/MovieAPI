@@ -37,7 +37,8 @@ function Movie ({ movie, onClickSelect }) {
         content={<>
           <h1>{selectedMovie.title}</h1>
           <p>{selectedMovie.release_date.substr(0, 4)}</p>
-          <p>Rating: {selectedMovie.vote_average}/10  ({selectedMovie.vote_count})</p>
+          {/* update rating here via callback/prop */}
+          <p>Rating: {selectedMovie.vote_average}/10  ({selectedMovie.vote_count})</p> 
           <StarRating movie={movie} />
           {/* ^^ update this so if you click it the value is passed to the handler */}
           <p>{selectedMovie.overview}</p>

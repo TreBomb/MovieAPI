@@ -56,11 +56,11 @@ function MovieList({ movieListArray, title, list }) {
                         <Movie key={movie.id} movie={movie}/>
                     )
                 })}
+                </div>
                 <div className="pages">
                     <button className="page-button" onClick={e => forceChange("prev")}>{`<`}</button>
                     <p className="page-number">{page}</p>
                     <button className="page-button" onClick={e => forceChange("next")}>{`>`}</button>
-                </div>
                 </div>
             </div>
         );
