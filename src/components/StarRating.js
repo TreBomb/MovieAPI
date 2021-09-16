@@ -15,6 +15,17 @@ const StarRating = ({ movie, value }) => {
   const [rating, setRating] = React.useState(parseInt(value) || 0);
   const [selection, setSelection] = React.useState(0);
 
+  useEffect(() => {
+    const RATINGS_URL = `https://api.themoviedb.org/3/guest_session/${sessionID}/rated/movies?api_key=96e1ba7547341bdadc80d9ff0f1edbab&language=en-US&sort_by=created_at.desc`;
+    fetch(RATINGS_URL)
+    .then(r => r.json())
+    .then(data => {
+      const arr = data.results;
+      const movie = arr.filter(() => arr.title === movie.title);
+      setRating(movie.rating);
+    });
+  }, [movie])
+
   function handleRateMovie(value) {
     console.log(`**Got Value: ${value}`);
 
