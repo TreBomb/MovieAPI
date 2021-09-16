@@ -2,49 +2,44 @@ import React, { useState, useEffect } from "react";
 import Movie from "./Movie";
 import ViewAll from "./ViewAll";
 
-function MovieList({ movieListArray, title, list }) {
+function IndividualList({ movieListArray, title, list }) {
     const [page, setPage] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
     const [movies, setMovies] = useState([]);
-    const [change, forceChange] = useState("");
 
     useEffect(() => {
         fetch(`${list}&page=1`)
         .then(r => r.json())
         .then(data => {
             console.log(data);
-            setPage(data.page);
+            setPage(1);
             setTotalPages(data.total_pages);
             setMovies(movieListArray);
         })
-    }, [movieListArray])
+    }, [])
 
-    useEffect(() => {
-        if(change==="prev") {
-            page === 1 ? setPage(totalPages) : setPage(page - 1);
+    function changePage(type) {
+        if(type==="prev") {
+            page === 1 ? setPage(totalPages) : setPage(lastPage => lastPage - 1);
             console.log(`${list}&page=${page}`);
             fetch(`${list}&page=${page}`)
             .then(r => r.json())
             .then(data => {
                 console.log(`prev:`, data);
-                setPage(data.page);
                 setMovies(data.results);
             })
-            forceChange("");
         }
-        if(change==="next") {
-            page === totalPages ? setPage(1) : setPage(page + 1);
+        if(type==="next") {
+            page === totalPages ? setPage(1) : setPage(lastPage => lastPage + 1);
             console.log(`${list}&page=${page}`);
             fetch(`${list}&page=${page}`)
             .then(r => r.json())
             .then(data => {
                 console.log(`next:`, data);
-                setPage(data.page);
                 setMovies(data.results);
             })
-            forceChange("");
         }
-    }, [change])
+    }
 
     if(title !=="Search Results") {
         return (
@@ -58,9 +53,9 @@ function MovieList({ movieListArray, title, list }) {
                 })}
                 </div>
                 <div className="pages">
-                    <button className="page-button" onClick={e => forceChange("prev")}>{`<`}</button>
+                    <button className="page-button" onClick={e => changePage("prev")}>{`<`}</button>
                     <p className="page-number">{page}</p>
-                    <button className="page-button" onClick={e => forceChange("next")}>{`>`}</button>
+                    <button className="page-button" onClick={e => changePage("next")}>{`>`}</button>
                 </div>
             </div>
         );
@@ -80,4 +75,4 @@ function MovieList({ movieListArray, title, list }) {
     }
 }
 
-export default MovieList;
+export default IndividualList;

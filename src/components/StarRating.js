@@ -21,8 +21,10 @@ const StarRating = ({ movie, value }) => {
     .then(r => r.json())
     .then(data => {
       const arr = data.results;
-      const movie = arr.filter(() => arr.title === movie.title);
-      setRating(movie.rating);
+      const movieRating = arr.filter(item => item.title === movie.title);
+      console.log(movieRating);
+      setRating(movieRating.rating);
+      setSelection(movieRating.rating);
     });
   }, [movie])
 
