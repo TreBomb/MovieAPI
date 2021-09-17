@@ -14,7 +14,7 @@ function IndividualList({ movieListArray, title, list }) {
             setTotalPages(data.total_pages);
             setMovies(movieListArray);
         })
-    }, [])
+    }, [movieListArray])
 
     function changePage(type) {
         if(type==="prev") {

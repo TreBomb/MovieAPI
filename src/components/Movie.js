@@ -32,7 +32,7 @@ function Movie ({ movie }) {
     function buildProviders(providers) {
       if (providers && providers.buy) {
           const toSet = (
-            <div class="buy-list">
+            <div className="buy-list">
               <h3>Buy it on:</h3>
               {providers.buy.map((movie, index) => {
                 return <p key={index}>{movie.provider_name}</p>
@@ -44,7 +44,7 @@ function Movie ({ movie }) {
 
       if (providers && providers.flatrate) {
         const toSet = (
-          <div class="stream-list">
+          <div className="stream-list">
             <h3>Stream it on:</h3>
             {providers.flatrate.map((movie, index) => {
               return <p key={index}>{movie.provider_name}</p>
@@ -56,7 +56,7 @@ function Movie ({ movie }) {
 
     if (providers && providers.rent) {
         const toSet = (
-          <div class="rent-list">
+          <div className="rent-list">
             <h3>Rent it on:</h3>
             {providers.rent.map((movie, index) => {
               return <p key={index}>{movie.provider_name}</p>
