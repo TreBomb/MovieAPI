@@ -218,11 +218,18 @@ code {
   max-height: 70vh;
   margin-top: calc(100vh - 85vh - 20px);
   background-color: #282a39;
-  /* background: #fff; */
   border-radius: 4px;
   padding: 20px;
   border: 1px solid #999;
   overflow: auto;
+}
+
+.rent-list h3{
+  color: white;
+}
+
+.buy-list h3{
+  color: white;
 }
  
 .close-icon {
