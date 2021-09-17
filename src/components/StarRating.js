@@ -22,15 +22,12 @@ const StarRating = ({ movie, value }) => {
     .then(data => {
       const arr = data.results;
       const movieRating = arr.filter(item => item.title === movie.title);
-      console.log(movieRating);
       setRating(movieRating.rating);
       setSelection(movieRating.rating);
     });
   }, [movie])
 
   function handleRateMovie(value) {
-    console.log(`**Got Value: ${value}`);
-
     const requestBody = {
       "value": value
     }

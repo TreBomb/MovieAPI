@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Movie from "./Movie";
-import ViewAll from "./ViewAll";
 
 function IndividualList({ movieListArray, title, list }) {
     const [page, setPage] = useState(0);
@@ -11,7 +10,6 @@ function IndividualList({ movieListArray, title, list }) {
         fetch(`${list}&page=1`)
         .then(r => r.json())
         .then(data => {
-            console.log(data);
             setPage(1);
             setTotalPages(data.total_pages);
             setMovies(movieListArray);
@@ -21,21 +19,19 @@ function IndividualList({ movieListArray, title, list }) {
     function changePage(type) {
         if(type==="prev") {
             page === 1 ? setPage(totalPages) : setPage(lastPage => lastPage - 1);
-            console.log(`${list}&page=${page}`);
+            
             fetch(`${list}&page=${page}`)
             .then(r => r.json())
             .then(data => {
-                console.log(`prev:`, data);
                 setMovies(data.results);
             })
         }
         if(type==="next") {
             page === totalPages ? setPage(1) : setPage(lastPage => lastPage + 1);
-            console.log(`${list}&page=${page}`);
+            
             fetch(`${list}&page=${page}`)
             .then(r => r.json())
             .then(data => {
-                console.log(`next:`, data);
                 setMovies(data.results);
             })
         }

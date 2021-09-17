@@ -4,12 +4,10 @@ import StarRating from "./StarRating";
 import {sessionID} from "./App";
 
 
-function Movie ({ movie, onClickSelect }) {
+function Movie ({ movie }) {
     const BASE_URL = "https://api.themoviedb.org/3";
     const IMG_BASE_URL = "https://image.tmdb.org/t/p/w500/";
     const [selectedMovie, setSelectedMovies] = useState([]);
-    // const [movieRating, setMovieRatings] = useState([]);
-    const [provider, setProviders] = useState([]);
     const [rentList, setRentList] = useState(null);
     const [buyList, setBuyList] = useState(null);
     const [streamList, setStreamList] = useState(null);
@@ -27,7 +25,6 @@ function Movie ({ movie, onClickSelect }) {
       .then(resp => resp.json())
       .then(data => {
           const providers = data.results.US;
-            setProviders(providers);
             buildProviders(providers)
       });
   }, []);
@@ -47,7 +44,7 @@ function Movie ({ movie, onClickSelect }) {
 
       if (providers && providers.flatrate) {
         const toSet = (
-          <div class="rent-list">
+          <div class="stream-list">
             <h3>Stream it on:</h3>
             {providers.flatrate.map((movie, index) => {
               return <p key={index}>{movie.provider_name}</p>
@@ -68,18 +65,13 @@ function Movie ({ movie, onClickSelect }) {
         )
         setRentList(toSet);
     }
-  }
-
-    function onClickSelect() {
-        console.log(`${movie.title} was clicked!`);
-    }   
+  }  
 
     const [isOpen, setIsOpen] = useState(false);
  
     const togglePopup = () => {
         setIsOpen(!isOpen);
     }
-
  
     return(
         <div>

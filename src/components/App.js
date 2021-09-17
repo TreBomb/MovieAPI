@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import { Switch, Route } from "react-router-dom";
-import logo from '../logo.svg';
 import Header from "./Header";
 import MovieList from "./MovieList";
 import IndividualList from "./IndividualList";
@@ -26,9 +25,7 @@ function App() {
   const ALL_LIST = `https://api.themoviedb.org/3/discover/movie?api_key=96e1ba7547341bdadc80d9ff0f1edbab&guest_session_id=${sessionID}language=en-US&sort_by=vote_count.desc&include_adult=false&include_video=false`;
   const [allList, setAllList] = useState([]);
 
-  const [searchedMovies, setSearchedMovies] = useState([]);
-  const [page, setPage] = useState("/");
-  
+  const [searchedMovies, setSearchedMovies] = useState([]);  
 
   useEffect(() => {
     fetch(POPULAR_LIST)
